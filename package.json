@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "dev": "npx tailwindcss -i ./static/src/input.css -o ./static/src/styles.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.2"
+  },
+  "dependencies": {
+    "flatpickr": "^4.6.13"
+  }
+}

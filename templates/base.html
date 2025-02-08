@@ -29,9 +29,9 @@
             class="flex relative min-w-[240px] h-full flex-col gap-1 p-2 text-base font-normal ">
             <div class="relative block w-full">
                 <!-- Calendar -->
-                <a  href="{% url 'calendar' %}"
-                    class="flex items-center m-1 w-full p-3 leading-tight transition-all rounded-lg outline-none text-start bg-accent-200"
-                    onclick="$('a').removeClass('bg-accent-200 hover:bg-accent-200').addClass('hover:bg-secondary'); $(this).addClass('bg-accent-200 hover:bg-accent-200')">
+                <a  href="{% url 'calendar' %}" name="calendar"
+                    class="flex items-center m-1 w-full p-3 leading-tight transition-all rounded-lg outline-none text-start"
+                    >
                     <div class="grid mr-4 place-items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 448 512"
                             class="w-5 h-5" aria-hidden="true">
@@ -43,9 +43,9 @@
                     Calendar
                 </a>
                 <!-- Tasks -->
-                <a  href="{% url 'tasks' %}"
+                <a  href="{% url 'tasks' %}" name="tasks"
                     class="flex items-center w-full m-1 p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-secondary"
-                    onclick="$('a').removeClass('bg-accent-200 hover:bg-accent-200').addClass('hover:bg-secondary'); $(this).addClass('bg-accent-200 hover:bg-accent-200')">
+                    >
                     <div class="grid mr-4 place-items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor"
                             aria-hidden="true" class="w-5 h-5">
@@ -63,9 +63,9 @@
                     </div>
                 </a>
                 <!-- My Groupes -->
-                <a  href="{% url 'groupes' %}"
+                <a  href="{% url 'groupes' %}" name="groupes"
                     class="flex items-center w-full p-3 m-1 leading-tight transition-all rounded-lg outline-none text-start hover:bg-secondary"
-                    onclick="$('a').removeClass('bg-accent-200 hover:bg-accent-200').addClass('hover:bg-secondary'); $(this).addClass('bg-accent-200 hover:bg-accent-200')">
+                    >
                     <div class="grid mr-4 place-items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="currentColor"
                             aria-hidden="true" class="w-5 h-5">
@@ -82,9 +82,9 @@
             <hr class="my-2" />
             <div class="bottom-0">
                 <!-- Inbox -->
-                <a  href="{% url 'inbox' %}"
+                <a  href="{% url 'inbox' %}" name="inbox"
                     class="flex  items-center w-full m-1 p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-secondary"
-                    onclick="$('a').removeClass('bg-accent-200 hover:bg-accent-200').addClass('hover:bg-secondary'); $(this).addClass('bg-accent-200 hover:bg-accent-200')">
+                    >
                     <div class="grid mr-4 place-items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                             aria-hidden="true" class="w-5 h-5">
@@ -102,9 +102,9 @@
                     </div>
                 </a>
                 <!-- Profile -->
-                <a  href="{% url 'profile' %}"
+                <a  href="{% url 'profile' %}" name="profile"
                     class="flex items-center w-full m-1 p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-secondary"
-                    onclick="$('a').removeClass('bg-accent-200 hover:bg-accent-200').addClass('hover:bg-secondary'); $(this).addClass('bg-accent-200 hover:bg-accent-200')">
+                    >
                     <div class="grid mr-4 place-items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                             aria-hidden="true" class="w-5 h-5">
@@ -116,9 +116,8 @@
                     Profile
                 </a>
                 <!-- Settings -->
-                <a  href="{% url 'settings' %}"
-                    class="flex items-center w-full m-1 p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-secondary"
-                    onclick="$('a').removeClass('bg-accent-200 hover:bg-accent-200').addClass('hover:bg-secondary'); $(this).addClass('bg-accent-200 hover:bg-accent-200')">
+                <a  href="{% url 'settings' %}" name="settings"
+                    class="flex items-center w-full m-1 p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-secondary">
                     <div class="grid mr-4 place-items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                             aria-hidden="true" class="w-5 h-5">
@@ -131,8 +130,7 @@
                 </a>
                 <!-- Logout -->
                 <a
-                    class="flex items-center w-full m-1 p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-secondary"
-                    onclick="$('a').removeClass('bg-accent-200 hover:bg-accent-200').addClass('hover:bg-secondary'); $(this).addClass('bg-accent-200 hover:bg-accent-200')">
+                    class="flex items-center w-full m-1 p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-secondary">
                     <div class="grid mr-4 place-items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor"
                             aria-hidden="true" class="w-5 h-5">
@@ -147,7 +145,7 @@
             </div>
         </nav>
         <div role="alert"
-            class="hidden relative flex w-full px-4 py-4 mt-auto text-base text-white bg-gray-900 rounded-lg font-regular">
+            class="hidden relative w-full px-4 py-4 mt-auto text-base text-dark bg-accent-200 rounded-lg font-regular">
             <div class="mr-12">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" aria-hidden="true" class="w-12 h-12 mb-4">
@@ -165,16 +163,13 @@
                 </p>
                 <div class="flex gap-3 mt-4">
                     <a href="#"
-                        class="block font-sans text-sm antialiased font-medium leading-normal text-inherit opacity-80">
+                        class="block font-sans right-0 text-sm antialiased font-medium leading-normal text-inherit opacity-80">
                         Dismiss
-                    </a>
-                    <a href="#" class="block font-sans text-sm antialiased font-medium leading-normal text-inherit">
-                        Upgrade Now
                     </a>
                 </div>
             </div>
             <button
-                class="!absolute  top-3 right-3 h-8 max-h-[32px] w-8 max-w-[32px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-white transition-all hover:bg-white/10 active:bg-white/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                class="!absolute top-3 right-3 h-8 max-h-[32px] w-8 max-w-[32px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-white transition-all hover:bg-white/10 active:bg-white/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                 type="button">
                 <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
@@ -191,5 +186,13 @@
         {% endblock content %}
     </div>
 </body>
+
+<script>
+    $(document).ready(function () {
+        current = "{{ request.path }}".replace('/', '').replace('/', '');
+        $('a').removeClass('bg-accent-200').addClass('hover:bg-secondary');
+        $(`a[name="${current}"]`).removeClass('hover:bg-secondary').addClass('bg-accent-200');
+    });
+</script>
 
 </html>

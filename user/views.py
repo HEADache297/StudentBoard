@@ -38,3 +38,9 @@ def logout(request):
     logout(request)
 
     return redirect('homepage')
+
+def profile(request):
+    return render(request, 'profile.html')
+
+def settings(request):
+    return render(request, 'settings.html')

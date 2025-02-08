@@ -29,7 +29,7 @@
             class="flex relative min-w-[240px] h-full flex-col gap-1 p-2 text-base font-normal ">
             <div class="relative block w-full">
                 <!-- Calendar -->
-                <a
+                <a  href="{% url 'calendar' %}"
                     class="flex items-center m-1 w-full p-3 leading-tight transition-all rounded-lg outline-none text-start bg-accent-200"
                     onclick="$('a').removeClass('bg-accent-200 hover:bg-accent-200').addClass('hover:bg-secondary'); $(this).addClass('bg-accent-200 hover:bg-accent-200')">
                     <div class="grid mr-4 place-items-center">
@@ -43,7 +43,7 @@
                     Calendar
                 </a>
                 <!-- Tasks -->
-                <a
+                <a  href="{% url 'tasks' %}"
                     class="flex items-center w-full m-1 p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-secondary"
                     onclick="$('a').removeClass('bg-accent-200 hover:bg-accent-200').addClass('hover:bg-secondary'); $(this).addClass('bg-accent-200 hover:bg-accent-200')">
                     <div class="grid mr-4 place-items-center">
@@ -63,7 +63,7 @@
                     </div>
                 </a>
                 <!-- My Groupes -->
-                <a
+                <a  href="{% url 'groupes' %}"
                     class="flex items-center w-full p-3 m-1 leading-tight transition-all rounded-lg outline-none text-start hover:bg-secondary"
                     onclick="$('a').removeClass('bg-accent-200 hover:bg-accent-200').addClass('hover:bg-secondary'); $(this).addClass('bg-accent-200 hover:bg-accent-200')">
                     <div class="grid mr-4 place-items-center">
@@ -82,7 +82,7 @@
             <hr class="my-2" />
             <div class="bottom-0">
                 <!-- Inbox -->
-                <a
+                <a  href="{% url 'inbox' %}"
                     class="flex  items-center w-full m-1 p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-secondary"
                     onclick="$('a').removeClass('bg-accent-200 hover:bg-accent-200').addClass('hover:bg-secondary'); $(this).addClass('bg-accent-200 hover:bg-accent-200')">
                     <div class="grid mr-4 place-items-center">
@@ -102,7 +102,7 @@
                     </div>
                 </a>
                 <!-- Profile -->
-                <a
+                <a  href="{% url 'profile' %}"
                     class="flex items-center w-full m-1 p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-secondary"
                     onclick="$('a').removeClass('bg-accent-200 hover:bg-accent-200').addClass('hover:bg-secondary'); $(this).addClass('bg-accent-200 hover:bg-accent-200')">
                     <div class="grid mr-4 place-items-center">
@@ -116,7 +116,7 @@
                     Profile
                 </a>
                 <!-- Settings -->
-                <a
+                <a  href="{% url 'settings' %}"
                     class="flex items-center w-full m-1 p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-secondary"
                     onclick="$('a').removeClass('bg-accent-200 hover:bg-accent-200').addClass('hover:bg-secondary'); $(this).addClass('bg-accent-200 hover:bg-accent-200')">
                     <div class="grid mr-4 place-items-center">

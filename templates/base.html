@@ -13,6 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'font/font.css' %}">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 </head>
 
 <body class="flex flex-row">
@@ -29,7 +30,8 @@
             <div class="relative block w-full">
                 <!-- Calendar -->
                 <a
-                    class="flex items-center m-1 w-full p-3 leading-tight transition-all rounded-lg outline-none text-start bg-accent-200">
+                    class="flex items-center m-1 w-full p-3 leading-tight transition-all rounded-lg outline-none text-start bg-accent-200"
+                    onclick="$('a').removeClass('bg-accent-200 hover:bg-accent-200').addClass('hover:bg-secondary'); $(this).addClass('bg-accent-200 hover:bg-accent-200')">
                     <div class="grid mr-4 place-items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 448 512"
                             class="w-5 h-5" aria-hidden="true">
@@ -42,7 +44,8 @@
                 </a>
                 <!-- Tasks -->
                 <a
-                    class="flex items-center w-full m-1 p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-secondary">
+                    class="flex items-center w-full m-1 p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-secondary"
+                    onclick="$('a').removeClass('bg-accent-200 hover:bg-accent-200').addClass('hover:bg-secondary'); $(this).addClass('bg-accent-200 hover:bg-accent-200')">
                     <div class="grid mr-4 place-items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor"
                             aria-hidden="true" class="w-5 h-5">
@@ -61,7 +64,8 @@
                 </a>
                 <!-- My Groupes -->
                 <a
-                    class="flex items-center w-full p-3 m-1 leading-tight transition-all rounded-lg outline-none text-start hover:bg-secondary">
+                    class="flex items-center w-full p-3 m-1 leading-tight transition-all rounded-lg outline-none text-start hover:bg-secondary"
+                    onclick="$('a').removeClass('bg-accent-200 hover:bg-accent-200').addClass('hover:bg-secondary'); $(this).addClass('bg-accent-200 hover:bg-accent-200')">
                     <div class="grid mr-4 place-items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="currentColor"
                             aria-hidden="true" class="w-5 h-5">
@@ -79,7 +83,8 @@
             <div class="bottom-0">
                 <!-- Inbox -->
                 <a
-                    class="flex items-center w-full m-1 p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-secondary">
+                    class="flex  items-center w-full m-1 p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-secondary"
+                    onclick="$('a').removeClass('bg-accent-200 hover:bg-accent-200').addClass('hover:bg-secondary'); $(this).addClass('bg-accent-200 hover:bg-accent-200')">
                     <div class="grid mr-4 place-items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                             aria-hidden="true" class="w-5 h-5">
@@ -98,7 +103,8 @@
                 </a>
                 <!-- Profile -->
                 <a
-                    class="flex items-center w-full m-1 p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-secondary">
+                    class="flex items-center w-full m-1 p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-secondary"
+                    onclick="$('a').removeClass('bg-accent-200 hover:bg-accent-200').addClass('hover:bg-secondary'); $(this).addClass('bg-accent-200 hover:bg-accent-200')">
                     <div class="grid mr-4 place-items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                             aria-hidden="true" class="w-5 h-5">
@@ -111,7 +117,8 @@
                 </a>
                 <!-- Settings -->
                 <a
-                    class="flex items-center w-full m-1 p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-secondary">
+                    class="flex items-center w-full m-1 p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-secondary"
+                    onclick="$('a').removeClass('bg-accent-200 hover:bg-accent-200').addClass('hover:bg-secondary'); $(this).addClass('bg-accent-200 hover:bg-accent-200')">
                     <div class="grid mr-4 place-items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                             aria-hidden="true" class="w-5 h-5">
@@ -124,7 +131,8 @@
                 </a>
                 <!-- Logout -->
                 <a
-                    class="flex items-center w-full m-1 p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-secondary">
+                    class="flex items-center w-full m-1 p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-secondary"
+                    onclick="$('a').removeClass('bg-accent-200 hover:bg-accent-200').addClass('hover:bg-secondary'); $(this).addClass('bg-accent-200 hover:bg-accent-200')">
                     <div class="grid mr-4 place-items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor"
                             aria-hidden="true" class="w-5 h-5">

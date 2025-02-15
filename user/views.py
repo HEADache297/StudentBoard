@@ -1,36 +1,59 @@
 from django.shortcuts import render, redirect
 from .forms import CustomUserRegistrationForm, CustomUserLoginForm
 from django.contrib.auth import login as auth_login, authenticate
+from django.contrib import messages
 # Create your views here.
 
-def sign_up(request):
+def authorisation(request):
+    login_form = CustomUserLoginForm()
+    signup_form = CustomUserRegistrationForm() 
+
     if request.method == 'POST':
-        form = CustomUserRegistrationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            auth_login(request, user)
-            return redirect('/') 
-    else:
-        form = CustomUserRegistrationForm()
-    return render(request, 'registration/signup.html', {'form': form})
+        if 'login' in request.POST: 
+            print(request.POST)
+            login_form = CustomUserLoginForm(request, data=request.POST)
 
-def login(request):
-    if request.method == 'POST':
-        form = CustomUserLoginForm(request, data=request.POST)
-        if form.is_valid():
-            email = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
+            if login_form.is_valid():
 
-            user = authenticate(username=form.cleaned_data.get('username'),
-                                password=form.cleaned_data.get('password')) 
+                print('EMAIL EMAIL',login_form.cleaned_data.get('username'))
+                print('PAASSWORD PASSWORD',login_form.cleaned_data.get('password'))
 
-            if user is not None:
+                user = authenticate(
+                    username=login_form.cleaned_data.get('username'),
+                    password=login_form.cleaned_data.get('password')
+                )
+                print(user,'user user')
+                if user is not None:
+                    print(user)
+                    auth_login(request, user)
+                    return redirect('/home')  
+                else:
+                    messages.error(request, 'Incorrect login details')
+                    print(login_form.errors)
+            else:
+                messages.error(request, 'Login error')
+                
+        
+        else: 
+            print('sign_form')
+
+            signup_form = CustomUserRegistrationForm(request.POST)
+            if signup_form.is_valid():
+                user = signup_form.save()
                 auth_login(request, user)
-                return redirect('/') 
-
+                return redirect('/home')  
+            else:
+                messages.error(request, 'Error during registration')
+            
     else:
-        form = CustomUserLoginForm()
-    return render(request, 'registration/login.html', {'form': form})
+        login_form = CustomUserLoginForm()
+        signup_form = CustomUserRegistrationForm()
+
+    return render(request, 'registration/authorisation.html', {
+        'login_form': login_form,
+        'signup_form': signup_form
+    })
+
 
 
 def logout(request):
@@ -44,3 +67,6 @@ def profile(request):
 
 def settings(request):
     return render(request, 'settings.html')
+
+def addStudent(request):
+    return render(request, 'addStudent.html')

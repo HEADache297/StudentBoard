@@ -1,0 +1,124 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentBoard</title>
+    <link rel="stylesheet" href="{% static 'src/styles.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'font/font.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+
+<body class="overflow-hidden bg-accent-200 flex justify-center items-center h-screen">
+    <div id="login" class="text-dark p-4 bg-primary rounded-3xl fixed " style="width: 456px;">
+        <p class="font-bold text-3xl mb-3 ml-3">Login</p>
+        <form method="post" class="form flex flex-col" action="{% url 'authorisation' %}">
+            {% csrf_token %}
+            <div class="flex flex-col gap-3">
+                {{ login_form.non_field_errors }}
+                {{ login_form.username }}
+                {{ login_form.password }}
+            </div>
+            <button type="submit" name="login"
+                class="bg-secondary hover:bg-accent-100 text-dark font-bold py-2 px-4 rounded mx-4 mt-4">
+                Login
+            </button>
+            <p class="ml-4 mt-2">Don't have an account? Click <a id="toggle_signup" class="text-accent-100 underline cursor-pointer">here</a></p>
+        </form>
+    </div>
+
+    <div id="sign_up" class="absolute text-dark p-4 bg-primary rounded-3xl hidden">
+        <p class="font-bold text-3xl mb-3 ml-3">Sign Up</p>
+        <form method="post" class="form flex flex-col gap-3" action="{% url 'authorisation' %}">
+            {% csrf_token %}
+            <div class="flex flex-row content-stretch gap-3">
+                {{ signup_form.non_field_errors }}
+                {{ signup_form.name }}
+                {{ signup_form.surname }}
+            </div>
+            <div class="flex flex-col gap-3">
+                {{ signup_form.email }}
+                {{ signup_form.password1 }}
+                {{ signup_form.password2 }}
+            </div>
+            <button type="submit" name="signup"
+                class="bg-secondary hover:bg-accent-100 text-dark font-bold py-2 px-4 rounded mx-4 mt-4">
+                Signup
+            </button>
+            <p class="ml-4 mt-2">Have an account? Click <a id="toggle_login" class="text-accent-100 underline cursor-pointer">here</a></p>
+        </form>
+    </div>
+
+    <script>
+        let screenWidth = window.innerWidth;
+        
+        document.getElementById("toggle_signup").addEventListener("click", function () {
+            console.log("Switched to Sign Up");
+    
+            gsap.fromTo("#login", 
+                { opacity: 1, y: 0 },
+                { 
+                    opacity: 0,
+                    y: 700, 
+                    duration: 1.8, 
+                    ease: "back.inOut(1.7)",
+                    onStart: function () {
+                        document.getElementById("sign_up").classList.remove("hidden");
+                    }
+                }
+            );
+    
+            gsap.fromTo("#sign_up", 
+                { opacity: 0, x: screenWidth },
+                { 
+                    opacity: 1, 
+                    x: -0, 
+                    duration: 2.1, 
+                    ease: "back.inOut(1.7)", 
+                    onStart: function () {
+                        document.getElementById("sign_up").classList.remove("hidden");
+                    }
+                }
+            );
+        });
+    
+        document.getElementById("toggle_login").addEventListener("click", function () {
+            console.log("Switched to Login");
+    
+            gsap.fromTo("#login", 
+                { opacity: 0, y: -700 },
+                { 
+                    opacity: 1, 
+                    y: 0, 
+                    duration: 1.8, 
+                    ease: "back.inOut(1.7)",
+                    onStart: function () {
+                        document.getElementById("sign_up").classList.remove("hidden");
+                    }
+                 }
+            );
+    
+            gsap.fromTo("#sign_up", 
+                { opacity: 1, x: 0 },
+                { 
+                    opacity: 0, 
+                    x: -700, 
+                    duration: 2.1, 
+                    ease: "back.inOut(1.7)",
+                    onStart: function () {
+                        document.getElementById("sign_up").classList.remove("hidden");
+                    }
+                }
+            );
+        });
+    </script>
+    
+
+</body>
+</html>

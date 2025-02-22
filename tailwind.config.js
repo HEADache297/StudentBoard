@@ -11,7 +11,7 @@ module.exports = {
 					200: '#b0d7d9'
 				},
 				'primary': '#FBF9F1',
-				'secondary': '#E5E1DA',
+				'secondary': '#F2EEE6',
 				'dark': '#2D2D2D',
 			}
 		},

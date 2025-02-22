@@ -32,3 +32,15 @@ class CustomUserLoginForm(AuthenticationForm):
     #     super().__init__(*args, **kwargs)
     #     self.fields['username'].widget.attrs.update({'id': 'login_email'})
     #     self.fields['password'].widget.attrs.update({'id': 'login_password'})
+
+class studentCreationForm(forms.ModelForm):
+    name = forms.CharField(max_length=255, widget=Input(attrs={'class': 'm-3 h-12 rounded-lg p-2 bg-secondary text-dark', 'placeholder': 'Name'}))
+    surname = forms.CharField(max_length=255, widget=Input(attrs={'class': 'm-3 h-12 rounded-lg p-2 bg-secondary text-dark', 'placeholder': 'Surname'}))
+    email = forms.CharField(max_length=255, widget=EmailInput(attrs={'class': 'm-3 h-12 rounded-lg p-2 bg-secondary text-dark', 'placeholder': 'Email'}))
+    password1 = forms.CharField(max_length=255, widget=PasswordInput(attrs={'class': 'm-3 h-12 rounded-lg p-2 bg-secondary text-dark', 'placeholder': 'Password'}))
+    password2 = forms.CharField(max_length=255, widget=PasswordInput(attrs={'class': 'm-3 h-12 rounded-lg p-2 bg-secondary text-dark', 'placeholder': 'Check password'}))
+    user_type = forms.ChoiceField(choices=[('student', 'Student'), ('teacher', 'Teacher'), ('parents', 'Parents')], widget=forms.Select(attrs={'class': 'p-2 rounded-lg bg-accent-200 text-dark'}))
+
+    class Meta:
+        model = CustomUser
+        fields = ['name', 'surname', 'email', 'password1', 'password2', 'user_type']

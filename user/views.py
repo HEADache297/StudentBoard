@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
-from .forms import CustomUserRegistrationForm, CustomUserLoginForm
+from .forms import CustomUserRegistrationForm, CustomUserLoginForm, studentCreationForm
 from django.contrib.auth import login as auth_login, authenticate
 from django.contrib import messages
+from django.http import HttpResponse
 # Create your views here.
 
 def authorisation(request):
@@ -69,4 +70,40 @@ def settings(request):
     return render(request, 'settings.html')
 
 def addStudent(request):
-    return render(request, 'addStudent.html')
+    if not request.user.is_teacher:
+        return HttpResponse('Access denied', status=403)
+
+    if request.method == 'POST':
+        form = studentCreationForm(request.POST)
+        print('form', form)
+        if form.is_valid():
+            user = form.save(commit=False)
+            print('user', user)
+            user_type = form.cleaned_data['user_type']
+            print(user_type)
+
+            if user_type == 'student':
+                user.is_student = True
+                user.is_teacher = False
+                user.is_parents = False
+
+            elif user_type == 'teacher':
+                user.is_student = False
+                user.is_teacher = True
+                user.is_parents = False
+
+            elif user_type == 'parents':
+                user.is_student = False
+                user.is_teacher = False
+                user.is_parents = True
+
+            user.set_password(form.cleaned_data['password1'])
+            user.save()
+            messages.success(request, f'{user_type.capitalize()} successfully added!')
+            return redirect('add_student')
+        else:
+            messages.error(request, 'Form is invalid. Please correct the errors.')
+    else:
+        form = studentCreationForm()
+
+    return render(request, 'addStudent.html', {'form': form})

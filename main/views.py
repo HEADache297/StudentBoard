@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .forms import EventForm, GroupForm
 
 # Create your views here.
 def home(request):
@@ -8,7 +9,15 @@ def calendar(request):
     return render(request, 'calendar.html')
 
 def groupes(request):
-    return render(request, 'groupes.html')
+    if request.method == 'POST':
+        form = GroupForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('groupes')
+    else:
+        form = GroupForm()
+
+    return render(request, 'groupes.html', {'form': form})
 
 def inbox(request):
     return render(request, 'inbox.html')

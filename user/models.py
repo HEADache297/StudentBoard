@@ -44,6 +44,9 @@ class CustomUser(AbstractUser):
     surname=models.CharField(null=False, max_length=50)
     created_at=models.DateTimeField(auto_now_add=True)
 
+    children = models.ManyToManyField('self', blank=True, related_name='parents', symmetrical=False)
+
+
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['name','surname']
     objects = CustomUserManger()

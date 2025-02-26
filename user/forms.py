@@ -41,6 +41,12 @@ class studentCreationForm(forms.ModelForm):
     password2 = forms.CharField(max_length=255, widget=PasswordInput(attrs={'class': 'm-3 h-12 rounded-lg p-2 bg-secondary text-dark', 'placeholder': 'Check password'}))
     user_type = forms.ChoiceField(choices=[('student', 'Student'), ('teacher', 'Teacher'), ('parents', 'Parents')], widget=forms.Select(attrs={'class': 'p-2 rounded-lg bg-accent-200 text-dark'}))
 
+    children = forms.ModelMultipleChoiceField(
+        queryset=CustomUser.objects.filter(is_student=True), 
+        required=False,
+        widget=forms.SelectMultiple(attrs={'class': 'p-2 rounded-lg bg-accent-200 text-dark'}),
+    )
+
     class Meta:
         model = CustomUser
-        fields = ['name', 'surname', 'email', 'password1', 'password2', 'user_type']
+        fields = ['name', 'surname', 'email', 'password1', 'password2', 'user_type', 'children']

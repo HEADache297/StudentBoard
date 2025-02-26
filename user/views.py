@@ -96,9 +96,15 @@ def addStudent(request):
                 user.is_student = False
                 user.is_teacher = False
                 user.is_parents = True
+                
 
             user.set_password(form.cleaned_data['password1'])
             user.save()
+
+            if user.is_parents:
+                children = form.cleaned_data['children']
+                user.children.set(children)
+
             messages.success(request, f'{user_type.capitalize()} successfully added!')
             return redirect('add_student')
         else:

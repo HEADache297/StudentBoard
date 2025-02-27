@@ -14,8 +14,7 @@ class EventForm(forms.ModelForm):
 class GroupForm(forms.ModelForm):
     class Meta:
         model = Group
-        fields = ['name', 'event', 'students', 'teacher']
+        fields = ['name', 'students', 'description']
         widgets = {
             'students': forms.SelectMultiple(),
-            'teacher': forms.Select(),
         }

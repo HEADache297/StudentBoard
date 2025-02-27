@@ -12,7 +12,10 @@ def groupes(request):
     if request.method == 'POST':
         form = GroupForm(request.POST)
         if form.is_valid():
-            form.save()
+            group = form.save(commit=False)
+            group.teacher = request.user
+            group.save()
+
             return redirect('groupes')
     else:
         form = GroupForm()

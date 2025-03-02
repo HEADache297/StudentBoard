@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>List of events</h2>
+
+<h3>Waiting for a response</h3>
+<div style="margin: 100px;">
+{% for event in pending_events %}
+    <p>{{ event.title }} - {{ event.event_type }}
+        <a href="{% url 'respond_to_event' event.id 'accept' %}">Прийняти</a>
+        <a href="{% url 'respond_to_event' event.id 'decline' %}">Відхилити</a>
+    </p>
+{% empty %}
+    <p>There are no pending events.</p>
+{% endfor %}
+</div>
+
+<h3>Accepted events</h3>
+<div style="margin: 100px;">
+{% for event in accepted_events %}
+    <p>{{ event.title }} - {{ event.event_type }}</p>
+{% empty %}
+    <p>No accepted events.</p>
+{% endfor %}
+</div>
+
+
+<a href="{% url 'event_create' %}">Create event</a>
+
+{% endblock %}  

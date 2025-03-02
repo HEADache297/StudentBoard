@@ -4,17 +4,41 @@ from user.models import CustomUser
 # Create your models here.
 
 class Event(models.Model):
-    name = models.CharField(max_length=255, null=False, blank=False)
+    EVENT_TYPES = [
+        ('exam', 'Exam'),
+        ('test', 'Test'),
+        ('school', 'School events'),
+        ('meeting', 'Parent-teacher conference'),
+        ('personal', 'Personal events')
+    ]
+
+    title = models.CharField(max_length=255, null=False, blank=False)
+    event_type = models.CharField(max_length=100, choices=EVENT_TYPES, null=False, blank=False)
     date = models.DateTimeField(null=False, blank=False)
-    duration = models.IntegerField(null=True, blank=True)
+    duration = models.DurationField()
     link = models.CharField(max_length=500, null=True, blank=True)
     description = models.CharField(max_length=1000, null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True, null=False, blank=False)
-    type = models.CharField(max_length=100, null=False, blank=False)
-    participants = models.ManyToManyField(CustomUser, blank=True)
+    created_by = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='created_events')
+    participants = models.ManyToManyField(CustomUser, through='EventParticipant', related_name='events')
 
     def __str__(self):
-        return self.name
+        return self.title
+
+class EventParticipant(models.Model):
+    STATUS_CHOICES = [
+        ('accepted', 'Accepted'),
+        ('declined', 'Declined'),
+        ('pending', 'Pending')
+    ]
+
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='event_participants')
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='event_participants')
+    status = models.CharField(max_length=100, choices=STATUS_CHOICES, default='pending')
+
+    def __str__(self):
+        return self.user.username
+
     
     
 class Group(models.Model):
